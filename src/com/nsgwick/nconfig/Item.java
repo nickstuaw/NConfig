@@ -5,16 +5,16 @@ public class Item<T> {
 
     private Class<T> c;
 
-    private Object object;
+    private T object;
 
     public Item() {}
 
-    public Item(final Object object, final Class<T> type) {
+    public Item(final T object, final Class<T> type) {
         this.c = type;
         this.object = object;
     }
 
-    public Item(final Class<T> c, final Object value) {
+    public Item(final Class<T> c, final T value) {
         setClass(c);
         set(value);
     }
@@ -23,9 +23,8 @@ public class Item<T> {
         return c.cast(this.object);
     }
 
-    public void set(final Object value) {
-        if(c.isInstance(value)) this.object = value;
-        else System.out.println("Casting Error! Please report this to a developer.");;
+    public void set(final T value) {
+        this.object = value;
     }
 
     public void setClass(Class<T> c) {
